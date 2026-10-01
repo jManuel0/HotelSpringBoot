@@ -1,7 +1,9 @@
 package com.hotel.Hotel.controller;
 
+import com.hotel.Hotel.dto.request.ActualizarClienteRequest;
 import com.hotel.Hotel.dto.request.CrearClienteRequest;
 import com.hotel.Hotel.dto.response.ClienteResponse;
+import com.hotel.Hotel.dto.response.ClienteResumenResponse;
 import com.hotel.Hotel.service.ClienteService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -38,4 +40,29 @@ public class ClienteController {
     public ResponseEntity<ClienteResponse> buscarPorId(@PathVariable UUID id) {
         return ResponseEntity.ok(clienteService.obtenerPorId(id));
     }
+
+    /**
+     * Requisito: Retornar vista agregada sin recursión.
+     * GET /api/clientes/{id}/resumen
+     */
+    @GetMapping("/{id}/resumen")
+    public ResponseEntity<ClienteResumenResponse> obtenerResumen(@PathVariable UUID id) {
+        ClienteResumenResponse resumen = clienteService.obtenerResumenPorId(id);
+        return ResponseEntity.ok(resumen);
+    }
+
+     @PatchMapping("/{id}")
+    public ResponseEntity<ClienteResponse> actualizarParcial(
+            @PathVariable UUID id,
+            @RequestBody ActualizarClienteRequest request) {
+        
+        ClienteResponse response = clienteService.actualizarParcial(id, request);
+        return ResponseEntity.ok(response);
 }
+
+}
+
+
+
+
+

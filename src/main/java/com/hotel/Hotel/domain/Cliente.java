@@ -85,4 +85,12 @@ public class Cliente {
     public List<Reserva> getReservas() {
         return Collections.unmodifiableList(reservas);
     }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }

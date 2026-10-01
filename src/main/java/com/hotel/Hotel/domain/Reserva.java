@@ -81,4 +81,9 @@ public class Reserva {
     public double getCostoTotal() {
         return costoTotal;
     }
+
+    public Object getHuesped() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getHuesped'");
+    }
 }
